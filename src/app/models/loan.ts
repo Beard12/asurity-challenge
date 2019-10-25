@@ -13,7 +13,7 @@ export interface Loan {
     lockInDate: Date
     longitude: number
     rateSpread: number
-    reverseMortgage: number 
+    reverseMortgage: number
 }
 
 enum LoanPurpose {
@@ -26,7 +26,7 @@ enum LoanType {
     Conventional = 1,
     FHAInsured,
     VAGuaranteed,
-    FSARHSGuaranteed 
+    FSARHSGuaranteed
 }
 
 enum AgencyCode {

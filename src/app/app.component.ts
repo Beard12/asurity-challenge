@@ -26,15 +26,15 @@ export class AppComponent implements OnInit {
   public rateSpreads: string[] = [
     "1.00 - 1.50",
     "1.51 - 2.00",
-    "2.01 - 2.50",  
+    "2.01 - 2.50",
     "2.51 - 3.00",
     "3.00 - 3.50",
     "3.50 or greater"
   ]
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
   ngOnInit(): void {
     this.loanService.getLoans()
       .subscribe(loans => {
@@ -52,34 +52,34 @@ export class AppComponent implements OnInit {
     this.previewDialog.open(loan);
   }
 
-  filterTrigger(event: MatRadioChange){
+  filterTrigger(event: MatRadioChange) {
     this.dataSource.filter = event.value;
   }
 
-  private transformLoans(loans: Loan[]) : Loan[]{
-    loans.forEach(loan => {loan.amortizationType = AmortizationType[loan.amortizationType]});
+  private transformLoans(loans: Loan[]): Loan[] {
+    loans.forEach(loan => { loan.amortizationType = AmortizationType[loan.amortizationType] });
     return loans;
   }
 
   private filterLoans(loan: Loan, rateSpread: string): boolean {
     let loanToFilter: boolean = false;
-    switch(rateSpread){
-      case("1.00 - 1.50"):
+    switch (rateSpread) {
+      case ("1.00 - 1.50"):
         loanToFilter = loan.rateSpread > 1 && loan.rateSpread <= 1.5;
         break;
-      case("1.51 - 2.00"):
+      case ("1.51 - 2.00"):
         loanToFilter = loan.rateSpread > 1.5 && loan.rateSpread <= 2;
         break;
-      case("2.01 - 2.50"):
+      case ("2.01 - 2.50"):
         loanToFilter = loan.rateSpread > 2 && loan.rateSpread <= 2.5;
         break;
-      case("2.51 - 3.00"):
+      case ("2.51 - 3.00"):
         loanToFilter = loan.rateSpread > 2.5 && loan.rateSpread <= 3;
         break;
-      case("3.00 - 3.50"):
+      case ("3.00 - 3.50"):
         loanToFilter = loan.rateSpread > 3 && loan.rateSpread <= 3.5;
         break;
-      case("3.50 or greater"):
+      case ("3.50 or greater"):
         loanToFilter = loan.rateSpread > 3.5;
         break;
       default:

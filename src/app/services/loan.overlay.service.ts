@@ -1,4 +1,4 @@
-import { Injectable, InjectionToken, Injector } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { LoanComponent } from '../components/loan/loan.component';
@@ -19,9 +19,9 @@ export class LoanOverlayService {
     constructor(
         private overlay: Overlay,
         private injector: Injector
-    ) {}
+    ) { }
 
-    public open(loan : Loan) {
+    public open(loan: Loan) {
         const dialogConfig = {
             hasBackdrop: true,
             backdropClass: 'dark-backdrop',
@@ -36,7 +36,6 @@ export class LoanOverlayService {
 
     private attachDialogContainer(overlayRef: OverlayRef, config: LoanDialogConfig, dialogRef: LoanOverlayRef) {
         const injector = this.createInjector(config, dialogRef);
-    
         const containerPortal = new ComponentPortal(LoanComponent, null, injector);
         overlayRef.attach(containerPortal);
     }
@@ -53,13 +52,13 @@ export class LoanOverlayService {
         const overlayConfig = this.getOverlayConfig(config);
         return this.overlay.create(overlayConfig);
     }
-    
+
     private getOverlayConfig(config: LoanDialogConfig): OverlayConfig {
         const positionStrategy = this.overlay.position()
             .global()
             .centerHorizontally()
             .centerVertically();
-        
+
         const overlayConfig = new OverlayConfig({
             hasBackdrop: config.hasBackdrop,
             backdropClass: config.backdropClass,
