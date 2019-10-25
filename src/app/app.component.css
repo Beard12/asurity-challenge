@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+.outRange{
+    background-color: lightcoral;
+}
+
+.radio-buttons{
+    margin: 15px;
+}
+
+.spread-radio-group{
+    margin-left:10px;
+}
+
+.spread-radio-button{
+    margin-left:10px;
+}

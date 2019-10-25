@@ -1,0 +1,23 @@
+<div *ngIf="loan">
+    <mat-card class="loanDetail">
+        <mat-card-header>
+            <mat-card-title>Loan Id {{loan.loanId}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Loan Amount : {{loan.loanAmount | currency:'USD':'symbol':'4.2-2'}} </p>
+            <p>Loan Term : {{loan.loanTerm }} years</p>
+            <p>Loan Purpose: {{ loan.loanPurpose}} </p>
+            <p>Loan Type: {{loan.loanType}}</p>
+            <p>APR: {{loan.apr}} % </p>
+            <p>Lock-In Date: {{loan.lockInDate | date: 'longDate'}} </p>
+            <p>Application Date: {{loan.applDate | date: 'longDate'}}</p>
+            <p>Reverse Mortgage: {{loan.reverseMortgage === 1 ? "Yes" : "No"}} </p>
+            <p>Rate Spread: {{loan.rateSpread}} </p>
+            <p>Amortization Type: {{loan.amortizationType}} </p>
+            <p>Latitude: {{loan.latitude}} </p>
+            <p>Longitude: {{loan.longitude}} </p>
+            <p>Action Taken: {{loan.actionTakenType}}</p>
+            <p>Agency Code: {{loan.agencyCode}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
